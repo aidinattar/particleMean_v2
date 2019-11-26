@@ -1,0 +1,106 @@
+
+---- Modificare Mean_v1 e introdurre le classi ----
+
+Sostituire la struttura "Event" con una classe "Event" e 
+la funzione "add" con la classe "MassMean", come descritto sotto.
+
+La rms della massa invarante è calcolata a partire dalla differenza di
+numeri molto piccoli, quindi la precisione limitata ha effetti non trascurabili. Per
+risolvere questi problemi applicare uno o entrambi i suggermenti di particleMean_v1.
+
+***
+Creare una classe "Event" con gli stessi membri della precedente struttura "Event":
+dichiarare questi membri privati. Includere un aggiuntivo membro const private,
+per contenere il numero massimo di particelle (10).
+Aggiungere alla classe:
+- un costruttore che prende come parametri l'identificativo dell'evento e le
+  coordinate del punto di decadimento,
+- un distruttore,
+- una funzione "add" per aggiungere una particella all'evento, che prende come
+  argomenti le 3 componenti del momento e la carica,
+- 4 funzioni "eventNumber", "x", "y", "z" che restituiscono il numero dell'evento e
+  le 3 cooridnate del punto di decadimento,
+- una funzione "nParticles" che restituisce il numero di particelle,
+- una funzione "particle" che prende un int come argomento e restituisce il pointer
+  alla particella corrispondente, se esistente, o un pointer null se la particella
+  non esiste (cioè quando l'argomento è più grande del numero di particellle).
+Dichiarare "const" le funzioni che restituiscono i dati dell'evento
+("eventNumber", "x", "y", "z").
+Creare e eliminare l'array di pointer alle particelle nel costruttore e nel
+distruttore, usando il massimo numero di particelle come dimensione; nel 
+distruttore eliminare anche tutte le particelle , prima di eliminare l'array.
+Nella funzione "add" verificare se il numero massimo di particelle è stato raggiunto,
+altrimenti aggiungere la nuova particella e incrementare il numero di particelle.
+
+***
+Modificare la funzione "read", per usare le nuove funzioni nella classe "Event":
+- passare il numero dell'evento e le coordinate del punto di decadimento al costruttore,
+- chiamare la funzione "add" nel loop per leggere le particelle.
+
+***
+Rimuovere la funzione "clear".
+
+***
+Modificare le funzioni "dump" per accedere ai dati dell'evento attraverso le funzioni
+della classe "Event".
+
+***
+Creare una class Utilities, e spostare dentro questa nuova classe le due funzioni per
+calcolare l'energia o la massa dalle 3 componenti del momento e la massa o l'energia,
+rispettivamente. Dichiarare queste funzioni come "static".
+
+***
+Creare una classe Constants e spostare dentro questa nuova classe le masse del pione,
+protone, K0 e Lambda0. Inizializzare questi valori propriamente.
+
+***
+Modificare la funzione "mass" in modo che:
+- acceda ai dati dell'evento attraverso le funzioni della classe "Event",
+- usi le funzioni e i valori nelle classi "Utilities" e "Constants".
+
+***
+Creare una classe "MassMean" con i membri privati che seguono:
+- due numeri per il minimo e il massimo della massa invariante,
+- il numero degli eventi selezionati,
+- due numeri per la somma delle masse e somma dei quadrati,
+- due numeri per media e rms.
+Aggiungere alla classe:
+- un costruttore che prende il minimo e il massimo della massa invariante come parametri,
+- un distruttore,
+- una funzione "add" che prende come argomento una referenza a un const-Event,
+  per aggiornare la somma delle masse e i quadrati,
+- una funzione "compute" per calcolare media e rms,
+- una funzione "nEvents" che restituisce il numero di eventi selezionati,
+- due funzioni "mMean" e "mRMS" che restituiscono media e rms.
+Inizializzare tutte le variabili nel costruttore.
+Nella funzione "add" calcolare la massa invariante chiamando la funzione "mass",
+controllare se il risultato è nel range richiesto, se si incrementare il counter
+dell'evento e le somme, altrimenti non fare nulla.
+Dichiarare "const" le funzioni che resituiscono risultati (numero di eventi selezionati,
+massa e rms).
+Se si sceglie di sottrarre il minimo della massa evento per evento, usare lo stesso 
+parametro per selezionare gli eventi dentro il range delle masse.
+
+***
+Nella funzione "main" creare due istanze di "MassMean", per selezionare gli eventi con
+massa invariante nei range:
+K0      : min = 0.490 , max = 0.505
+Lambda0 : min = 1.114 , max = 1.118
+Nel loop sull'evento chiamare la funzione "add" per entrambe le istanze e rimpazzare 
+la chiamata alla funzione "clear" con la chiamata all'operatore "delete"; alla fune 
+chiamare la funzione "compute" e stampare i risutlati per entrmabe le istanze.
+
+********* final list of functions *********
+
+main                   to complete
+read                   modify Mean_v1
+dump                   modify Mean_v1
+mass                   modify Mean_v1
+
+********* final list of classes   *********
+
+                       .h                            .cc
+Event                  to complete                   to complete
+MassMean               to complete                   to complete
+Constants              to do                         to do
+Utilities              to do                         to do
