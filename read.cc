@@ -35,8 +35,7 @@ const Event* read( std::ifstream& file ){
              >> Px >> Py >> Pz;
 
         ev->add( Px, Py, Pz, q );
-
-    }  
+    }
     
     return ev;
 }
