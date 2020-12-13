@@ -8,7 +8,8 @@ Event::Event( int n, float x, float y, float z ):
  // initializations
  evNumber( n ),
  X( x ), Y( y ), Z( z ),
- nParticles( 0 ){
+ nParticles( 0 ),
+ Max(10){
 
   // allocate a buffer for particle pointers
   for ( unsigned int i = 0; i < Max; ++i ) {
@@ -39,7 +40,7 @@ void Event::add( float Px, float Py, float Pz, int q ) {
     newPar->Px = Px;
     newPar->Py = Py;
     newPar->Pz = Pz;
-    newPar->q = q;
+    newPar->q  =  q;
 
     // store the new particle pointer in the array and increase counter
     particles[ nParticles++ ] = newPar;

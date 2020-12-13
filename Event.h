@@ -20,7 +20,6 @@ class Event {
 
     int q; // charge
     float Px; float Py; float Pz; // momentum components
-  
   };
   typedef const Particle* part_ptr;
 
@@ -37,7 +36,6 @@ class Event {
   int numParticles() const;
   // get particle
   const part_ptr particle( unsigned int i ) const;
-  unsigned int Max = 10;
 
  private:
 
@@ -45,6 +43,7 @@ class Event {
   int evNumber; // event id
   float X; float Y; float Z;  // decay point
   unsigned int nParticles;   // number of particles
+  unsigned int Max;
   part_ptr* particles = new part_ptr[Max]; // array of pointers to Particle
 
 };

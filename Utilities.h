@@ -18,7 +18,6 @@ struct Utilities {
 
         return sqrt ( pow ( en,   2 ) -
                       pow ( Ptot, 2) );
-
     }
 
     static inline double energy   ( float Px, float Py, float Pz,
@@ -30,7 +29,6 @@ struct Utilities {
 
         return sqrt ( pow ( invMass, 2 ) +
                       pow ( Ptot,    2 ) );
-
     }
 
 };

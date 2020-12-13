@@ -23,7 +23,7 @@ class MassMean {
 
  private:
 
-  double massMin;  // min mass
+  double massMin; // min mass
   double massMax; // max mass
 
   int nEvt; // number of accepted events
